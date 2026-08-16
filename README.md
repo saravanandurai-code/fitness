@@ -32,17 +32,17 @@ host without server rewrites.
 
 ## Live deployment
 
-Pushing to `main` or the feature branch runs `.github/workflows/deploy.yml`, which lints, tests,
-builds and publishes to GitHub Pages:
-
 **https://saravanandurai-code.github.io/fitness/**
 
-One-time setup in the repository: **Settings → Pages → Build and deployment → Source → "GitHub
-Actions"**. Until that is set, the build passes but the publish step reports `Get Pages site
-failed` — the workflow token is not permitted to create the Pages site on its own.
+The site is served by GitHub Pages straight from the branch: **Settings → Pages → Source
+"Deploy from a branch" → branch `claude/sarv-lifestyle-app-mvp-4v97bd`, folder `/docs`.**
 
-The Vite `base` defaults to `/fitness/` for that project URL. For a root-domain host (Netlify,
-Vercel, a custom domain) build with `BASE_PATH=/ npm run build` instead.
+`npm run build` therefore outputs to `docs/`, and that folder is committed. The
+`Build Sarv` workflow rebuilds and re-commits it on every push, so the live site follows the
+source without any manual publishing step.
+
+The Vite `base` is `/fitness/` to match the project URL. For a root-domain host (Netlify, Vercel,
+a custom domain) build with `BASE_PATH=/ npm run build` instead.
 
 ## What's in the MVP
 

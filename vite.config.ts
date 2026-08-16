@@ -6,8 +6,14 @@ import react from '@vitejs/plugin-react'
 // (Netlify, Vercel, a custom domain).
 const base = process.env.BASE_PATH ?? '/fitness/'
 
+// Build into docs/ so GitHub Pages can serve the compiled app straight from the
+// branch ("Deploy from a branch" → /docs) without a separate publish step.
 // https://vite.dev/config/
 export default defineConfig({
   base,
+  build: {
+    outDir: 'docs',
+    emptyOutDir: true,
+  },
   plugins: [react()],
 })
