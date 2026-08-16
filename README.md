@@ -20,14 +20,14 @@ Other scripts:
 
 | Script | What it does |
 | --- | --- |
-| `npm run build` | Type-check and build to `dist/` |
+| `npm run build` | Type-check and build to `docs/` (what GitHub Pages serves) |
 | `npm run preview` | Serve the production build |
 | `npm test` | Run the unit tests (Vitest) |
 | `npm run lint` | Lint with oxlint |
 
 No backend or account is required. Everything you track is stored in the browser's
 `localStorage` under the key `sarv.state.v1`, and can be exported as JSON from **Profile → Your
-data**. The routing uses a hash router, so the built `dist/` folder can be served from any static
+data**. The routing uses a hash router, so the built `docs/` folder can be served from any static
 host without server rewrites.
 
 ## Live deployment
