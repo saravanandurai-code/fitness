@@ -30,6 +30,20 @@ No backend or account is required. Everything you track is stored in the browser
 data**. The routing uses a hash router, so the built `dist/` folder can be served from any static
 host without server rewrites.
 
+## Live deployment
+
+Pushing to `main` or the feature branch runs `.github/workflows/deploy.yml`, which lints, tests,
+builds and publishes to GitHub Pages:
+
+**https://saravanandurai-code.github.io/fitness/**
+
+One-time setup in the repository: **Settings → Pages → Build and deployment → Source → "GitHub
+Actions"**. Until that is set, the build passes but the publish step reports `Get Pages site
+failed` — the workflow token is not permitted to create the Pages site on its own.
+
+The Vite `base` defaults to `/fitness/` for that project URL. For a root-domain host (Netlify,
+Vercel, a custom domain) build with `BASE_PATH=/ npm run build` instead.
+
 ## What's in the MVP
 
 | Area | What it does |

@@ -35,11 +35,10 @@ jobs:
       - run: npm test
       - run: npm run build
 
-      # enablement turns Pages on for the repo (build type "GitHub Actions")
-      # the first time this runs, so no manual setup is needed.
+      # One-time repo setup: Settings → Pages → Source → "GitHub Actions".
+      # The workflow token cannot create the Pages site itself, so this step
+      # fails with "Get Pages site failed" until that switch is flipped.
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
