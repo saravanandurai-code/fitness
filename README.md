@@ -130,3 +130,11 @@ manually entered and labelled as such, so automatic sources can be distinguished
 
 Sarv is a lifestyle companion, not a medical product. Scores and suggestions are general guidance
 and should not replace advice from a qualified healthcare professional.
+
+---
+
+## Also in this repository
+
+**[`fitraa/`](./fitraa)** — *Fitraa*, a separate product: a React Native + Expo mobile app
+("Train. Track. Transform.") built around a 30-day routine and a daily streak. It has its own
+README, dependencies and tests, and does not share code with Sarv.

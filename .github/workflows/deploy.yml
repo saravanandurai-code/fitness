@@ -49,3 +49,25 @@ jobs:
           git add docs
           git commit -m "Rebuild docs/ from ${GITHUB_SHA::7} [skip ci]"
           git push
+
+  # The Fitraa mobile app lives in fitraa/ and is checked independently of the
+  # Sarv web build above.
+  fitraa:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fitraa
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: fitraa/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
