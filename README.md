@@ -38,12 +38,14 @@ host without server rewrites.
 | **Sarv** | **https://saravanandurai-code.github.io/fitness/** |
 | **Fitraa demo** | **https://saravanandurai-code.github.io/fitness/fitraa/** |
 
-The site is served by GitHub Pages straight from the branch: **Settings → Pages → Source
-"Deploy from a branch" → branch `claude/sarv-lifestyle-app-mvp-4v97bd`, folder `/docs`.**
+GitHub Pages is set to **Settings → Pages → Source → "GitHub Actions"**, and the `Build Sarv`
+workflow's `publish` job uploads `docs/` and deploys it on every push, so the live site follows the
+source with no manual step.
 
-`npm run build` therefore outputs to `docs/`, and that folder is committed. The
-`Build Sarv` workflow rebuilds and re-commits it on every push, so the live site follows the
-source without any manual publishing step.
+`npm run build:site` outputs to `docs/`, and that folder is also committed: it keeps the published
+tree reviewable in the repository and means the site still works if Pages is ever switched back to
+"Deploy from a branch" (branch + `/docs`). The publish job is marked `continue-on-error` so it does
+not fail the run in that mode.
 
 Fitraa is a mobile app; the URL above is its Expo **web export**, published purely so the UI can be
 opened in a browser. It is a demo, not the product — iOS and Android are the real targets. Because
