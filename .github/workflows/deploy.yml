@@ -14,6 +14,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: build-${{ github.ref }}
@@ -76,3 +78,31 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
+
+  # Publishes docs/ when the repository's Pages source is "GitHub Actions".
+  #
+  # If the source is instead "Deploy from a branch" (branch + /docs), GitHub's
+  # own builder publishes the committed docs/ folder and this job is redundant:
+  # configure-pages then reports that the site is not in workflow mode, so the
+  # job soft-fails rather than failing the run.
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The build job may have just committed a rebuilt docs/.
+          ref: ${{ github.ref }}
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
