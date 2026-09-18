@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "oxlint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "build:site": "npm run build && npm --prefix fitraa run export:pages && node scripts/stage-fitraa.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",

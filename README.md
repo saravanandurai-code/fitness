@@ -20,7 +20,8 @@ Other scripts:
 
 | Script | What it does |
 | --- | --- |
-| `npm run build` | Type-check and build to `docs/` (what GitHub Pages serves) |
+| `npm run build` | Type-check and build Sarv to `docs/` |
+| `npm run build:site` | Build Sarv **and** stage the Fitraa web demo — this is what produces the full published `docs/` tree |
 | `npm run preview` | Serve the production build |
 | `npm test` | Run the unit tests (Vitest) |
 | `npm run lint` | Lint with oxlint |
@@ -32,7 +33,10 @@ host without server rewrites.
 
 ## Live deployment
 
-**https://saravanandurai-code.github.io/fitness/**
+| | |
+| --- | --- |
+| **Sarv** | **https://saravanandurai-code.github.io/fitness/** |
+| **Fitraa demo** | **https://saravanandurai-code.github.io/fitness/fitraa/** |
 
 The site is served by GitHub Pages straight from the branch: **Settings → Pages → Source
 "Deploy from a branch" → branch `claude/sarv-lifestyle-app-mvp-4v97bd`, folder `/docs`.**
@@ -40,6 +44,12 @@ The site is served by GitHub Pages straight from the branch: **Settings → Page
 `npm run build` therefore outputs to `docs/`, and that folder is committed. The
 `Build Sarv` workflow rebuilds and re-commits it on every push, so the live site follows the
 source without any manual publishing step.
+
+Fitraa is a mobile app; the URL above is its Expo **web export**, published purely so the UI can be
+opened in a browser. It is a demo, not the product — iOS and Android are the real targets. Because
+GitHub Pages has no rewrite rules, an unknown path lands on an app's start screen via `docs/404.html`
+rather than resolving exactly; `docs/fitraa/_expo/` also relies on `docs/.nojekyll`, which the Vite
+build emits from `public/`.
 
 The Vite `base` is `/fitness/` to match the project URL. For a root-domain host (Netlify, Vercel,
 a custom domain) build with `BASE_PATH=/ npm run build` instead.
@@ -137,4 +147,5 @@ and should not replace advice from a qualified healthcare professional.
 
 **[`fitraa/`](./fitraa)** — *Fitraa*, a separate product: a React Native + Expo mobile app
 ("Train. Track. Transform.") built around a 30-day routine and a daily streak. It has its own
-README, dependencies and tests, and does not share code with Sarv.
+README, dependencies and tests, and does not share code with Sarv. Browser demo:
+[/fitness/fitraa/](https://saravanandurai-code.github.io/fitness/fitraa/).

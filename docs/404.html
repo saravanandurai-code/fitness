@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <meta name="robots" content="noindex" />
+    <script>
+      // Unknown path: send the visitor to the start of the app it belongs to.
+      var base = '/fitness/'
+      var target = location.pathname.indexOf(base + 'fitraa') === 0 ? base + 'fitraa/' : base
+      location.replace(target)
+    </script>
+  </head>
+  <body style="background:#08090c"></body>
+</html>

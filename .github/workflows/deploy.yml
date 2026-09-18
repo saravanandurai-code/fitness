@@ -31,10 +31,15 @@ jobs:
           cache: npm
 
       - run: npm ci
+      # The Fitraa web demo is published alongside Sarv, so its deps are needed
+      # here to run the export.
+      - run: npm --prefix fitraa ci
 
       - run: npm run lint
       - run: npm test
-      - run: npm run build
+      # Builds Sarv into docs/, then stages the Fitraa web export at
+      # docs/fitraa with the not-found fallbacks.
+      - run: npm run build:site
 
       # "[skip ci]" plus the paths-ignore above keeps this from re-triggering
       # itself; an unchanged build produces no commit at all.

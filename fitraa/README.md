@@ -10,6 +10,14 @@ a 30-day routine and Fitraa helps you keep showing up:
 React Native + Expo + TypeScript, built for iOS and Android. This is not a web app; the web target
 exists only so the UI can be previewed and screenshotted during development.
 
+## Browser demo
+
+**https://saravanandurai-code.github.io/fitness/fitraa/**
+
+This is Expo's web export, published so the UI can be opened without a device. Treat it as a
+preview: haptics are silent, the sheets are DOM modals rather than native ones, and data is stored
+per browser. Install it on a phone for the real thing.
+
 ## Running it
 
 ```bash
@@ -26,6 +34,7 @@ npm start          # then press i / a, or scan the QR code with Expo Go
 | `npm test` | Unit tests for the domain layer (Vitest) |
 | `npm run lint` | oxlint |
 | `npm run export:web` | Static web build, used for UI previews only |
+| `npm run export:pages` | Web build for the published demo (sets the `/fitness/fitraa` base path) |
 
 **No backend is required to run it.** With no Supabase project configured the whole journey is
 stored on the device, so a fresh clone works immediately.

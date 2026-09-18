@@ -12,6 +12,7 @@
     "expo-haptics": "^57.0.3",
     "expo-linking": "^57.0.10",
     "expo-router": "^57.0.21",
+    "expo-splash-screen": "^57.0.9",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",
     "react-dom": "^19.2.3",
@@ -36,7 +37,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "oxlint src",
-    "export:web": "expo export --platform web"
+    "export:web": "expo export --platform web",
+    "export:pages": "EXPO_BASE_URL=/fitness/fitraa expo export --platform web --output-dir dist --clear"
   },
   "private": true
 }
